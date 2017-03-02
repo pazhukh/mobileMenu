@@ -130,7 +130,10 @@
 }
 
 @media screen and (max-width: 991px){
-  .mobileMenu,.sandwich {
-   		display: block;
-   }
+  .mobileMenu {
+	 display: block;
+  }
+ .sandwich {
+	display: flex;
+ }
 }
