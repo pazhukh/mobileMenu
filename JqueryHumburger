@@ -59,7 +59,37 @@
     // JavaScript////////////////////////////////////////////////
     
     $(document).ready(function(){
+    var $bxsliderReview = $('.bxsliderReview');
+	var $sandwich = $('.sandwich');
+	var $sandwichInner = $('.sandwichInner');
+	var $mobileMenuWrap = $('.mobileMenuWrap');
+		
 		$('.sandwich').click(function(){
 			$('.sandwichInner').toggleClass('sandwichInnerActive');
-		})
+		});
+		//toggle sandwich
+		$sandwich.click(function(){
+			$sandwich.toggleClass('sandwichActive');
+			$sandwichInner.toggleClass('sandwichInnerActive');
+			$mobileMenuWrap.toggleClass('mobileMenuActive');
+		});
+
+		//remove .mobileMenuActive if window width > 991px
+		$(window).resize(function(){
+			if ($(window).width() > '991'){
+				$sandwich.removeClass('sandwichActive');
+				$mobileMenuWrap.removeClass('mobileMenuActive');
+				$sandwichInner.removeClass('sandwichInnerActive');
+			}
+		});
+
+	//close mobile menu if click outside
+	$('body').on('click', function(){
+		$mobileMenuWrap.removeClass('mobileMenuActive');
+		$sandwichInner.removeClass('sandwichInnerActive');
+		$sandwich.removeClass('sandwichActive');
+	});
+	$('.sandwich, .mobileMenuWrap').on('click', function(e){
+		e.stopPropagation();
+	})
 	})
