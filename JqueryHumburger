@@ -64,12 +64,8 @@
 	var $sandwichInner = $('.sandwichInner');
 	var $mobileMenuWrap = $('.mobileMenuWrap');
 		
-		$('.sandwich').click(function(){
-			$('.sandwichInner').toggleClass('sandwichInnerActive');
-		});
 		//toggle sandwich
 		$sandwich.click(function(){
-			$sandwich.toggleClass('sandwichActive');
 			$sandwichInner.toggleClass('sandwichInnerActive');
 			$mobileMenuWrap.toggleClass('mobileMenuActive');
 		});
