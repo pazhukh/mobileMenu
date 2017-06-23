@@ -6,83 +6,76 @@
 
 // CSS ////////////////////////////////////////////////
 
+/* sandwich */
 .sandwich {
-			z-index: 50;
-			position: absolute;
-			top: 20px;
-			right: 20px;
-			height: 50px;
-			width: 50px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer; 
-		}
-		.sandwichInner {
-			position: relative;	
-			transition: background .3s;
-			width: 40px;
-			height: 3px;
-			display: block;
-			background-color: black; 
-		}
-		.sandwichInner::before {
-			content: "";
-			width: inherit;
-			height: inherit;
-			background-color: black;
-			position: absolute;
-			top: -10px;
-			transition: all .5s; 
-		}
-		.sandwichInner::after {
-			content: "";
-			width: inherit;
-			height: inherit;
-			background-color: black;
-			position: absolute;
-			bottom: -10px;
-			transition: all .5s; 
-		}
-		.sandwichInnerActive {
-			 background: 0 0;
-		}
-		.sandwichInnerActive::before{
-			transform: rotate(45deg);
-			top: 0;	
-		}
-		.sandwichInnerActive::after{
-			transform: rotate(-45deg);
-			bottom: 0;
-		}
+	z-index: 50;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	height: 50px;
+	width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer; 
+}
+.sandwichInner {
+	position: relative;	
+	transition: background .3s;
+	width: 40px;
+	height: 3px;
+	display: block;
+	background-color: white; 
+	&::before, &::after{
+		content: "";
+		width: inherit;
+		height: inherit;
+		background-color: white;
+		position: absolute;
+		transition: all .5s;
+	}
+	&::before{
+		top: -10px;
+	}
+	&::after{
+		bottom: -10px;
+	}
+}
+.sandwichActive {
+	background: 0 0;
+	&::before{
+		transform: rotate(45deg);
+		top: 0;	
+	}
+	&::after{
+		transform: rotate(-45deg);
+		bottom: 0;
+	}
+}
     
     // JavaScript////////////////////////////////////////////////
     
     $(document).ready(function(){
-    var $bxsliderReview = $('.bxsliderReview');
-	var $sandwich = $('.sandwich');
+   var $sandwich = $('.sandwich');
 	var $sandwichInner = $('.sandwichInner');
 	var $mobileMenuWrap = $('.mobileMenuWrap');
 		
 		//toggle sandwich
 		$sandwich.click(function(){
-			$sandwichInner.toggleClass('sandwichInnerActive');
-			$mobileMenuWrap.toggleClass('mobileMenuActive');
+			$sandwichInner.toggleClass('sandwichActive');
 		});
 
 		//remove .mobileMenuActive if window width > 991px
 		$(window).resize(function(){
 			if ($(window).width() > '991'){
 				$sandwich.removeClass('sandwichActive');
-				$mobileMenuWrap.removeClass('mobileMenuActive');
-				$sandwichInner.removeClass('sandwichInnerActive');
+				$sandwichInner.removeClass('sandwichActive');
 			}
 		});
 
 	//close mobile menu if click outside
 	$('body').on('click', function(){
-		$mobileMenuWrap.removeClass('mobileMenuActive');
-		$sandwichInner.removeClass('sandwichInnerActive');
+		$sandwichInner.removeClass('sandwichActive');
 		$sandwich.removeClass('sandwichActive');
 	});
 	$('.sandwich, .mobileMenuWrap').on('click', function(e){
