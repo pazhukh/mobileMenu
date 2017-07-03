@@ -57,7 +57,6 @@
     
     $(document).ready(function(){
    var $sandwich = $('.sandwich');
-	var $sandwichInner = $('.sandwichInner');
 	var $mobileMenuWrap = $('.mobileMenuWrap');
 		
 		//toggle sandwich
