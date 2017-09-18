@@ -14,10 +14,23 @@
 	right: 20px;
 	height: 50px;
 	width: 50px;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer; 
+	&.active {
+		.sandwichInner{
+			background: 0 0;
+			&::before{
+				transform: rotate(45deg);
+				top: 0;	
+			}
+			&::after{
+				transform: rotate(-45deg);
+				bottom: 0;
+			}
+		}
+	}
 }
 .sandwichInner {
 	position: relative;	
@@ -39,19 +52,6 @@
 	}
 	&::after{
 		bottom: -10px;
-	}
-}
-.sandwichActive {
-	.sandwichInner{
-		background: 0 0;
-		&::before{
-			transform: rotate(45deg);
-			top: 0;	
-		}
-		&::after{
-			transform: rotate(-45deg);
-			bottom: 0;
-		}
 	}
 }
     
