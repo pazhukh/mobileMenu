@@ -64,19 +64,19 @@
 		
 		//toggle sandwich
 		sandwich.click(function(){
-		$(this).toggleClass('sandwichActive');
+		$(this).toggleClass('active');
 	});
 
 		//remove .mobileMenuActive if window width > 991px
 		$(window).resize(function(){
 			if ($(window).width() > '991'){
-				sandwich.removeClass('sandwichActive');
+				sandwich.removeClass('active');
 			}
 		});
 
 	//close mobile menu if click outside
 	$('body').on('click', function(){
-		sandwich.removeClass('sandwichActive');
+		sandwich.removeClass('active');
 	});
 	$('.sandwich, .mobileMenuWrap').on('click', function(e){
 		e.stopPropagation();
